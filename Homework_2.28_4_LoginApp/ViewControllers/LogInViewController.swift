@@ -16,10 +16,8 @@ class LogInViewController: UIViewController {
     @IBOutlet weak var forgotUsernameButton: UIButton!
     @IBOutlet weak var forgotPasswordButton: UIButton!
     
-    var iconClick = true
-    
-    let username = "Tim"
-    private let password = "Cook"
+    private let user = User.getUser()
+    private var iconClick = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +28,7 @@ class LogInViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let welcomeVC = segue.destination as? WelcomeViewController else { return }
         
-        welcomeVC.username = usernameTF.text
+        welcomeVC.user = user
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -50,8 +48,8 @@ class LogInViewController: UIViewController {
     
     @IBAction func forgotButtonPressed(_ sender: UIButton) {
         sender.tag == 10
-            ? showAlert(title: "Oops!", message: "Username is Tim")
-            : showAlert(title: "Oops!", message: "Password is Cook")
+        ? showAlert(title: "Oops!", message: "Username is \(user.login)")
+        : showAlert(title: "Oops!", message: "Password is \(user.password)")
     }
     
     @IBAction func unwindSegue(for segue: UIStoryboardSegue, sender: Any?) {
@@ -60,7 +58,7 @@ class LogInViewController: UIViewController {
     }
     
     @IBAction func logInButtonPressed() {
-        guard usernameTF.text == username, passwordTF.text == password else {
+        guard usernameTF.text == user.login, passwordTF.text == user.password else {
             showAlert(
                 title: "Oops",
                 message: "Wrong username or password!",

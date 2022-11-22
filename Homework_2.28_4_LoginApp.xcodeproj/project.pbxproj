@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F131892F292C9BF7002D08BC /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F131892E292C9BF7002D08BC /* User.swift */; };
 		F14093BC2929E007001FA6BD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14093BB2929E007001FA6BD /* AppDelegate.swift */; };
 		F14093BE2929E007001FA6BD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14093BD2929E007001FA6BD /* SceneDelegate.swift */; };
 		F14093C02929E007001FA6BD /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14093BF2929E007001FA6BD /* LogInViewController.swift */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F131892E292C9BF7002D08BC /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		F14093B82929E007001FA6BD /* Homework_2.28_4_LoginApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Homework_2.28_4_LoginApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F14093BB2929E007001FA6BD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F14093BD2929E007001FA6BD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -39,6 +41,50 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F1318929292C91B2002D08BC /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				F14093C12929E007001FA6BD /* Main.storyboard */,
+				F14093C62929E008001FA6BD /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		F131892A292C91CA002D08BC /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				F14093C42929E008001FA6BD /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		F131892B292C91DB002D08BC /* App */ = {
+			isa = PBXGroup;
+			children = (
+				F14093BB2929E007001FA6BD /* AppDelegate.swift */,
+				F14093BD2929E007001FA6BD /* SceneDelegate.swift */,
+				F14093C92929E008001FA6BD /* Info.plist */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		F131892C292C92F0002D08BC /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				F14093BF2929E007001FA6BD /* LogInViewController.swift */,
+				F14093CF292A253F001FA6BD /* WelcomeViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		F131892D292C9BBB002D08BC /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F131892E292C9BF7002D08BC /* User.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		F14093AF2929E007001FA6BD = {
 			isa = PBXGroup;
 			children = (
@@ -58,14 +104,11 @@
 		F14093BA2929E007001FA6BD /* Homework_2.28_4_LoginApp */ = {
 			isa = PBXGroup;
 			children = (
-				F14093BB2929E007001FA6BD /* AppDelegate.swift */,
-				F14093BD2929E007001FA6BD /* SceneDelegate.swift */,
-				F14093BF2929E007001FA6BD /* LogInViewController.swift */,
-				F14093CF292A253F001FA6BD /* WelcomeViewController.swift */,
-				F14093C12929E007001FA6BD /* Main.storyboard */,
-				F14093C42929E008001FA6BD /* Assets.xcassets */,
-				F14093C62929E008001FA6BD /* LaunchScreen.storyboard */,
-				F14093C92929E008001FA6BD /* Info.plist */,
+				F131892D292C9BBB002D08BC /* Models */,
+				F131892C292C92F0002D08BC /* ViewControllers */,
+				F1318929292C91B2002D08BC /* Storyboards */,
+				F131892B292C91DB002D08BC /* App */,
+				F131892A292C91CA002D08BC /* Resources */,
 			);
 			path = Homework_2.28_4_LoginApp;
 			sourceTree = "<group>";
@@ -144,6 +187,7 @@
 				F14093C02929E007001FA6BD /* LogInViewController.swift in Sources */,
 				F14093D0292A253F001FA6BD /* WelcomeViewController.swift in Sources */,
 				F14093BC2929E007001FA6BD /* AppDelegate.swift in Sources */,
+				F131892F292C9BF7002D08BC /* User.swift in Sources */,
 				F14093BE2929E007001FA6BD /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -293,7 +337,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = RR2792TYH2;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Homework_2.28_4_LoginApp/Info.plist;
+				INFOPLIST_FILE = Homework_2.28_4_LoginApp/App/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Login App";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -324,7 +368,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = RR2792TYH2;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Homework_2.28_4_LoginApp/Info.plist;
+				INFOPLIST_FILE = Homework_2.28_4_LoginApp/App/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Login App";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
