@@ -17,24 +17,12 @@ class LogInViewController: UIViewController {
     @IBOutlet weak var forgotPasswordButton: UIButton!
     
     var iconClick = true
+    
     let username = "Tim"
     private let password = "Cook"
     
-    private let usernamePlaceholder = NSAttributedString(
-        string: "Username",
-        attributes: [NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)]
-    )
-    
-    private let passwordPlaceholder = NSAttributedString(
-        string: "Password",
-        attributes: [NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)]
-    )
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        usernameTF.attributedPlaceholder = usernamePlaceholder
-        passwordTF.attributedPlaceholder = passwordPlaceholder
         
         logInButton.layer.cornerRadius = 10
     }
@@ -46,7 +34,8 @@ class LogInViewController: UIViewController {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
+        super.touchesBegan(touches, with: event)
+        view.endEditing(true)
     }
     
     @IBAction func showPasswordPressed() {
@@ -60,30 +49,9 @@ class LogInViewController: UIViewController {
     }
     
     @IBAction func forgotButtonPressed(_ sender: UIButton) {
-        switch sender {
-        case forgotUsernameButton:
-            let dialogMessage = UIAlertController(
-                title: "Oops!",
-                message: "Your username is Tim",
-                preferredStyle: .alert
-            )
-            
-            let ok = UIAlertAction(title: "Ok", style: .default)
-            dialogMessage.addAction(ok)
-            self.present(dialogMessage, animated: true, completion: nil)
-        case forgotPasswordButton:
-            let dialogMessage = UIAlertController(
-                title: "Oops!",
-                message: "Your password is Cook",
-                preferredStyle: .alert
-            )
-            
-            let ok = UIAlertAction(title: "Ok", style: .default)
-            dialogMessage.addAction(ok)
-            self.present(dialogMessage, animated: true, completion: nil)
-        default:
-            break
-        }
+        sender.tag == 10
+            ? showAlert(title: "Oops!", message: "Username is Tim")
+            : showAlert(title: "Oops!", message: "Password is Cook")
     }
     
     @IBAction func unwindSegue(for segue: UIStoryboardSegue, sender: Any?) {
@@ -92,16 +60,30 @@ class LogInViewController: UIViewController {
     }
     
     @IBAction func logInButtonPressed() {
-        if usernameTF.text != username || passwordTF.text != password {
-            wrongCredentials()
-            passwordTF.text = ""
+        guard usernameTF.text == username, passwordTF.text == password else {
+            showAlert(
+                title: "Oops",
+                message: "Wrong username or password!",
+                textField: passwordTF
+            )
+            return
         }
+        
+        performSegue(withIdentifier: "showWelcomeVC", sender: nil)
     }
     
-    private func wrongCredentials() {
-        let alert = UIAlertController(title: "Error", message: "Wrong username or password", preferredStyle: .alert)
-        let okButton = UIAlertAction(title: "Ok", style: .default)
-        alert.addAction(okButton)
-        self.present(alert, animated: true)
+    private func showAlert(title: String, message: String, textField: UITextField? = nil) {
+        let alert = UIAlertController(
+            title: title,
+            message: message,
+            preferredStyle: .alert
+        )
+        
+        let okAction = UIAlertAction(title: "Ok", style: .default) { _ in
+            textField?.text = ""
+        }
+        
+        alert.addAction(okAction)
+        present(alert, animated: true)
     }
 }
